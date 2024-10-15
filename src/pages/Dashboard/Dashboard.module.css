@@ -1,0 +1,13 @@
+.container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  .logoutButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff6b6b;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  

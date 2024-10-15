@@ -1,66 +1,41 @@
-// src/components/AuthForm.tsx
-import React, { FormEvent, useState } from 'react';
-import { Paper, TextField, Button, Typography } from '@mui/material';
+// src/context/AuthContext.tsx
+import { createContext, useContext, ReactNode, useState } from 'react';
 
-interface AuthFormProps {
-  title: string;
-  buttonText: string;
-  onSubmit: (email: string, password: string) => void;
+interface User {
+  email: string;
+  role: 'admin' | 'moderator' | 'user';
 }
 
-const AuthForm: React.FC<AuthFormProps> = ({ title, buttonText, onSubmit }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+interface AuthContextType {
+  user: User | null;
+  login: (email: string, role: 'admin' | 'moderator' | 'user') => void;
+  logout: () => void;
+}
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    onSubmit(email, password);
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+};
+
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const [user, setUser] = useState<User | null>(null);
+
+  const login = (email: string, role: 'admin' | 'moderator' | 'user') => {
+    setUser({ email, role });
+  };
+
+  const logout = () => {
+    setUser(null);
   };
 
   return (
-    <Paper
-      elevation={3}
-      sx={{
-        padding: 4,
-        maxWidth: 400,
-        margin: 'auto',
-        marginTop: 8,
-        borderRadius: 2,
-      }}
-    >
-      <Typography variant="h4" gutterBottom align="center">
-        {title}
-      </Typography>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          label="Email"
-          variant="outlined"
-          margin="normal"
-          fullWidth
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <TextField
-          label="Password"
-          variant="outlined"
-          type="password"
-          margin="normal"
-          fullWidth
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          fullWidth
-          sx={{ marginTop: 2 }}
-        >
-          {buttonText}
-        </Button>
-      </form>
-    </Paper>
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
-
-export default AuthForm;

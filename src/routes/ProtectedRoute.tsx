@@ -13,12 +13,10 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ role, children }) => {
   const location = useLocation();
 
   if (!user) {
-    // Kullanıcı yoksa giriş sayfasına yönlendir
     return <Navigate to="/" state={{ from: location }} replace />;
   }
 
   if (user.role !== role) {
-    // Yanlış role sahipse yetkisiz sayfasına yönlendir
     return <Navigate to="/unauthorized" replace />;
   }
 

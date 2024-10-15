@@ -1,19 +1,20 @@
 // src/routes/AppRoutes.tsx
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Login from '../pages/Login';
-import Signup from '../pages/Signup';
-import Dashboard from '../pages/Dashboard';
-import NotFound from '../pages/NotFound';
+import Welcome from '../pages/Welcome/Welcome';
+import Login from '../pages/Login/Login';
+import Signup from '../pages/Signup/Signup';
+import Dashboard from '../pages/Dashboard/Dashboard';
+import NotFound from '../pages/NotFound/NotFound';
+import Unauthorized from '../pages/Unauthorized/Unauthorized';
 import ProtectedRoute from './ProtectedRoute';
 
-const AppRoutes = () => {
+const AppRoutes: React.FC = () => {
   return (
     <Routes>
-      {/* Açık Erişimli Sayfalar */}
-      <Route path="/" element={<Login />} />
+      <Route path="/" element={<Welcome />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-
-      {/* Korumalı Erişim: Kullanıcı Dashboard */}
       <Route
         path="/dashboard"
         element={
@@ -22,28 +23,7 @@ const AppRoutes = () => {
           </ProtectedRoute>
         }
       />
-
-      {/* Korumalı Erişim: Admin Panel */}
-      <Route
-        path="/admin"
-        element={
-          <ProtectedRoute role="admin">
-            <div>Admin Panel</div> {/* Gelecekte admin sayfası buraya gelecek */}
-          </ProtectedRoute>
-        }
-      />
-
-      {/* Korumalı Erişim: Reviewer Sayfası */}
-      <Route
-        path="/reviewer"
-        element={
-          <ProtectedRoute role="reviewer">
-            <div>Reviewer Panel</div> {/* Denetleyici rolü için sayfa */}
-          </ProtectedRoute>
-        }
-      />
-
-      {/* 404 - Sayfa Bulunamadı */}
+      <Route path="/unauthorized" element={<Unauthorized />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

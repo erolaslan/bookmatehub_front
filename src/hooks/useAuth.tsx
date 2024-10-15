@@ -1,53 +1,53 @@
-// src/hooks/useAuth.tsx
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+// src/hooks/useAuth.ts
+import { createContext, useContext, useState, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// Kullanıcı arayüzü türü
 interface User {
   email: string;
-  role: 'admin' | 'reviewer' | 'user'; // Roller tanımlandı
+  role: 'admin' | 'moderator' | 'user';
 }
 
-// AuthContext için tür tanımı
 interface AuthContextType {
   user: User | null;
-  login: (email: string, role: 'admin' | 'reviewer' | 'user') => void;
+  loginWithEmail: (email: string, password: string) => Promise<void>;
+  signupWithEmail: (email: string, password: string) => Promise<void>;
   logout: () => void;
 }
 
-// AuthContext oluşturma
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType | null>(null);
 
-// AuthProvider bileşeni
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const navigate = useNavigate();
-
-  // Login işlevi
-  const login = (email: string, role: 'admin' | 'reviewer' | 'user') => {
-    const newUser: User = { email, role };
-    setUser(newUser);
-    navigate('/dashboard'); // Giriş sonrası yönlendirme
-  };
-
-  // Logout işlevi
-  const logout = () => {
-    setUser(null);
-    navigate('/'); // Çıkış sonrası yönlendirme
-  };
-
-  // Context değerini hazırlama
-  const value: AuthContextType = { user, login, logout };
-
-  // Provider bileşenini döndürme
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-};
-
-// useAuth hook'u
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
+};
+
+export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [user, setUser] = useState<User | null>(null);
+  const navigate = useNavigate();
+
+  const loginWithEmail = async (email: string, password: string) => {
+    // TODO: Backend entegrasyonu
+    setUser({ email, role: 'user' });
+    navigate('/dashboard');
+  };
+
+  const signupWithEmail = async (email: string, password: string) => {
+    // TODO: Backend entegrasyonu
+    setUser({ email, role: 'user' });
+    navigate('/dashboard');
+  };
+
+  const logout = () => {
+    setUser(null);
+    navigate('/');
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, loginWithEmail, signupWithEmail, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };

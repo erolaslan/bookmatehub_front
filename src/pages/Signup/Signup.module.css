@@ -1,0 +1,15 @@
+/* src/pages/Signup/Signup.module.css */
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
+.content {
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}

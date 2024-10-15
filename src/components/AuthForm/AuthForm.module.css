@@ -1,0 +1,21 @@
+/* src/context/AuthForm/AuthForm.module.css */
+.container {
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .submitButton {
+    margin-top: 1rem;
+  }
+  
+  .divider {
+    margin: 1.5rem 0;
+  }
+  
+  .socialButton {
+    margin-bottom: 0.5rem;
+  }
+  
