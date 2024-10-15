@@ -11,7 +11,10 @@
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "noEmit": true,
+    "composite": true, // Composite özelliği etkinleştirildi
+    "declaration": true, // Emit işlemi için gerekli
+    "declarationMap": true,
+    "emitDeclarationOnly": true, // Yalnızca .d.ts dosyaları çıkar
     "jsx": "react-jsx",
 
     /* Linting */

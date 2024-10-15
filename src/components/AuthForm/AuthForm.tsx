@@ -1,6 +1,6 @@
 // src/components/AuthForm/AuthForm.tsx
 import React, { useState } from 'react';
-import { Box, Button, Divider, Paper, TextField } from '@mui/material';
+import { Button, Divider, Paper, TextField } from '@mui/material';
 import { Google as GoogleIcon, Facebook as FacebookIcon, Apple as AppleIcon } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 

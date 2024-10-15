@@ -1,5 +1,5 @@
 // src/context/AuthContext.tsx
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, ReactNode, useContext, useState } from 'react';
 
 interface User {
   email: string;
@@ -8,23 +8,39 @@ interface User {
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string, role: 'admin' | 'moderator' | 'user') => void;
+  loginWithEmail: (email: string, password: string) => Promise<void>;
+  signupWithEmail: (email: string, password: string) => Promise<void>;
+  loginWithSocial: (provider: 'google' | 'facebook' | 'apple') => Promise<void>;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
-  const login = (email: string, role: 'admin' | 'moderator' | 'user') => {
-    setUser({ email, role });
+  const loginWithEmail = async (email: string, password: string) => {
+    console.log(`Logging in with email: ${email}`);
+    // Backend entegrasyonu burada yapılacak
+    setUser({ email, role: 'user' });
+  };
+
+  const signupWithEmail = async (email: string, password: string) => {
+    console.log(`Signing up with email: ${email}`);
+    // Backend entegrasyonu burada yapılacak
+    setUser({ email, role: 'user' });
+  };
+
+  const loginWithSocial = async (provider: 'google' | 'facebook' | 'apple') => {
+    console.log(`Logging in with ${provider}`);
+    // Sosyal medya login işlemi burada yapılacak
+    setUser({ email: `${provider}@example.com`, role: 'user' });
   };
 
   const logout = () => setUser(null);
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, loginWithEmail, signupWithEmail, loginWithSocial, logout }}>
       {children}
     </AuthContext.Provider>
   );
@@ -32,8 +48,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
+  if (!context) throw new Error('useAuth must be used within an AuthProvider');
   return context;
 };
