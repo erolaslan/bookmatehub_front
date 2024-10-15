@@ -1,22 +1,24 @@
-import React from 'react';
-import { Paper, Typography, TextField, Button } from '@mui/material';
+// src/pages/Signup.tsx
+import { useAuth } from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import AuthForm from '../components/AuthForm';
 
-function Signup() {
+const Signup = () => {
+  const { login } = useAuth(); // Mock olarak login yapalım
+  const navigate = useNavigate();
+
+  const handleSignup = (email: string, password: string) => {
+    login(email, 'user'); // Mock kayıt sonrası login
+    navigate('/dashboard');
+  };
+
   return (
-    <Paper
-      elevation={3}
-      sx={{ padding: 4, maxWidth: 400, margin: 'auto', borderRadius: 2, marginTop: 8 }}
-    >
-      <Typography variant="h4" gutterBottom align="center">
-        Signup
-      </Typography>
-      <TextField label="Email" variant="outlined" margin="normal" fullWidth />
-      <TextField label="Password" variant="outlined" type="password" margin="normal" fullWidth />
-      <Button variant="contained" color="primary" fullWidth sx={{ marginTop: 2 }}>
-        Signup
-      </Button>
-    </Paper>
+    <AuthForm
+      title="Signup"
+      buttonText="Signup"
+      onSubmit={handleSignup}
+    />
   );
-}
+};
 
 export default Signup;

@@ -1,22 +1,24 @@
-import React from 'react';
-import { Paper, Typography, TextField, Button } from '@mui/material';
+// src/pages/Login.tsx
+import { useAuth } from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import AuthForm from '../components/AuthForm';
 
-function Login() {
+const Login = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogin = (email: string, password: string) => {
+    login(email, 'user'); // Mock login işlemi
+    navigate('/dashboard');
+  };
+
   return (
-    <Paper
-      elevation={3}
-      sx={{ padding: 4, maxWidth: 400, margin: 'auto', borderRadius: 2, marginTop: 8 }}
-    >
-      <Typography variant="h4" gutterBottom align="center">
-        Login
-      </Typography>
-      <TextField label="Email" variant="outlined" margin="normal" fullWidth />
-      <TextField label="Password" variant="outlined" type="password" margin="normal" fullWidth />
-      <Button variant="contained" color="primary" fullWidth sx={{ marginTop: 2 }}>
-        Login
-      </Button>
-    </Paper>
+    <AuthForm
+      title="Login"
+      buttonText="Login"
+      onSubmit={handleLogin}
+    />
   );
-}
+};
 
 export default Login;
