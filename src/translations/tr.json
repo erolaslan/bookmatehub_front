@@ -6,5 +6,8 @@
   "discover_and_track": "Sevdiğiniz kitapları keşfedin, takip edin ve değerlendirin.",
   "dont_have_account": "Hesabınız yok mu?",
   "already_have_account": "Zaten bir hesabınız var mı?",
-  "back_to_home": "Ana Sayfaya Dön"
+  "back_to_home": "Ana Sayfaya Dön",
+  "email":"email",
+  "password":"şifre",
+  "OR":"VEYA"
 }

@@ -58,7 +58,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ type, onSubmit, onSocialLogin }) =>
         >
           {type === 'login' ? t('login') : t('signup')}
         </Button>
-        <Divider sx={{ my: 2 }}>OR</Divider>
+        <Divider sx={{ my: 2 }}>{t('OR')}</Divider>
         <Button
           variant="outlined"
           fullWidth
