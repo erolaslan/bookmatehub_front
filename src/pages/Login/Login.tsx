@@ -1,12 +1,16 @@
+// src/pages/Login/Login.tsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import { Box, Typography, Link } from '@mui/material';
+import LanguageSelector from '../../components/LanguageSelector/LanguageSelector';
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
   const navigate = useNavigate();
   const { loginWithEmail, loginWithSocial } = useAuth();
+  const { t } = useTranslation();
 
   return (
     <Box
@@ -17,8 +21,16 @@ const Login = () => {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#f5f5f5',
+        position: 'relative',
       }}
     >
+      <Box sx={{ position: 'absolute', top: 16, right: 16, display: 'flex', gap: 2 }}>
+        <LanguageSelector />
+        <Link onClick={() => navigate('/')} sx={{ cursor: 'pointer' }}>
+          {t('back_to_home')}
+        </Link>
+      </Box>
+
       <Box sx={{ textAlign: 'center' }}>
         <AuthForm
           type="login"
@@ -26,9 +38,9 @@ const Login = () => {
           onSocialLogin={(provider) => loginWithSocial(provider)}
         />
         <Typography variant="body2" sx={{ marginTop: 2 }}>
-          Don't have an account?{' '}
+          {t('dont_have_account')}{' '}
           <Link onClick={() => navigate('/signup')} sx={{ cursor: 'pointer' }}>
-            Signup
+            {t('signup')}
           </Link>
         </Typography>
       </Box>

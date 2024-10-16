@@ -7,7 +7,32 @@
   "dont_have_account": "Hesabınız yok mu?",
   "already_have_account": "Zaten bir hesabınız var mı?",
   "back_to_home": "Ana Sayfaya Dön",
-  "email":"email",
-  "password":"şifre",
-  "OR":"VEYA"
+  "email": "email",
+  "password": "şifre",
+  "OR": "VEYA",
+  "privacy_policy": {
+    "title": "Gizlilik Politikası",
+    "last_updated": "Son Güncelleme: Ekim 2024",
+    "introduction": {
+      "title": "Giriş",
+      "content": "BookMateHub'a hoş geldiniz! Platformumuz, kullanıcıların okudukları kitapları kaydetmelerine, yorum yazmalarına, incelemeleri görüntülemelerine ve kitapları puanlamalarına olanak tanır. Bu gizlilik politikası, hizmetimizi kullandığınızda kişisel bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklar."
+    },
+    "information_collection": {
+      "title": "Topladığımız Bilgiler",
+      "content": "E-posta adresiniz ve yorumlar gibi paylaştığınız içerikler gibi bilgileri topluyoruz. Bu veriler, platformda daha iyi bir deneyim sunmak ve hizmetlerimizi geliştirmek için toplanmaktadır."
+    },
+    "information_usage": {
+      "title": "Bilgilerinizi Nasıl Kullanıyoruz",
+      "content": "Topladığımız veriler, kitap incelemelerinizi ve diğer kullanıcılarla etkileşimlerinizi görüntülemek için kullanılır. Kişisel bilgilerinizi üçüncü taraflara satmıyoruz. E-posta adresiniz kimlik doğrulama amacıyla kullanılır."
+    },
+    "rights": {
+      "title": "Haklarınız",
+      "content": "Kişisel bilgilerinizi istediğiniz zaman hesap ayarlarınızdan güncelleyebilirsiniz. Hesabınızı silmek isterseniz, lütfen bizimle iletişime geçin."
+    },
+    "contact": {
+      "title": "İletişim",
+      "content": "Bu gizlilik politikası hakkında herhangi bir sorunuz veya endişeniz varsa, lütfen privacy@bookmatehub.com adresinden bizimle iletişime geçin."
+    },
+    "footer": "© 2024 BookMateHub. Tüm hakları saklıdır."
+  }
 }

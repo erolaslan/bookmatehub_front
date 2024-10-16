@@ -7,7 +7,32 @@
   "dont_have_account": "Don't have an account?",
   "already_have_account": "Already have an account?",
   "back_to_home": "Back to Home",
-  "email":"email",
-  "password":"password",
-  "OR":"OR"
+  "email": "email",
+  "password": "password",
+  "OR": "OR",
+  "privacy_policy": {
+    "title": "Privacy Policy",
+    "last_updated": "Last Updated: October 2024",
+    "introduction": {
+      "title": "Introduction",
+      "content": "Welcome to BookMateHub! Our platform allows users to keep track of the books they read, write comments, view reviews, and rate books. This privacy policy explains how we collect, use, and protect your personal information when you use our service."
+    },
+    "information_collection": {
+      "title": "Information We Collect",
+      "content": "We collect information such as your email address and any content you choose to post, such as comments and reviews. This data is collected to provide a better experience on the platform and improve our services."
+    },
+    "information_usage": {
+      "title": "How We Use Your Information",
+      "content": "The data we collect is used to display your book reviews and interactions with other users. We do not sell your personal information to third parties. Your email address is used for authentication purposes."
+    },
+    "rights": {
+      "title": "Your Rights",
+      "content": "You can update your personal information at any time by accessing your account settings. If you wish to delete your account, please contact us."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "content": "If you have any questions or concerns about this privacy policy, please contact us at privacy@bookmatehub.com."
+    },
+    "footer": "© 2024 BookMateHub. All rights reserved."
+  }
 }
